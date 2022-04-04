@@ -1,12 +1,13 @@
-#include<stdio.h>              //  Ê¹ÓÃÊ±ÐÞ¸Ä f(x)º¯Êý ½ç[a,b]    ¾«¶Èc  
+#include<stdio.h>              //  ä½¿ç”¨æ—¶ä¿®æ”¹ f(x)å‡½æ•° ç•Œ[a,b]    ç²¾åº¦c  
 #include<math.h>
 const double e=2.71828;
-#define f(x) (pow(e,-x)+x*x)     // f(x)º¯Êý 
+#define f(x) (pow(e,-x)+x*x)     // f(x)å‡½æ•° 
 #define lan(x) (a+(b-a)*0.382)
 #define miu(x) (a+(b-a)*0.618)
 int main()
 {
-	double a=0,b=1,c=0.03;    // ½ç[a,b] ÇÒ a<b   cÎªÄ¿±ê¾«¶È 
+	double a=0,b=1,c=0.03;    // ç•Œ[a,b] ä¸” a<b   cä¸ºç›®æ ‡ç²¾åº¦ 
+        printf("a        b        lan(a)   miu(b)   f(lan(a))f(miu(b))\n");
 	while(b-a>=c)
 	{
 		printf("%lf %lf %lf %lf %lf %lf\n",a,b,lan(a),miu(b),f(lan(a)),f(miu(b)));
