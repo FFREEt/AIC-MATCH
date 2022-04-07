@@ -1,0 +1,21 @@
+bool rotateString(char * s, char * goal){        //遍历串 s 判断是否符合题意即可，无需移动字符
+    int l1,l2;
+    l1=strlen(s);
+    l2=strlen(goal);
+    int i,j,k;
+    for(i=0;i<l1;i++)
+    {
+        if(s[i]==goal[0])
+        {
+            k=i;
+            for(j=0;j<l1;j++)
+            {
+                if(s[(k+j)%l1]!=goal[j])
+                break;
+            }
+            if(j==l1)
+            return true;
+        }
+    }
+    return false;
+}
