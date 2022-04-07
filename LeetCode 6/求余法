@@ -1,0 +1,41 @@
+class Solution {                     //将串分割为每个单位n, numRows>1时n=(numRows-1)*2  第一行和最后一行确定起始之后每次往后递增n
+public:                                                                               //其他每行有两个字符 分别为每单位第j个和第(numRow-1)-j 个
+    string convert(string s, int numRows) {                                          //以j为起始分别递增(numRows-1-j)*2 和 j*2 至串结束即可
+        if(numRows==1)                       //高度为1直接返回原串
+        return s;
+        int n=(numRows-1)*2,p=0,sizel=s.length();     //n为每个单位长度 例如高为四时每个单元共有六个
+        char l[10005];                               //p是目标串锚点，sizel为题目串的长度  l为目标串
+    for(int j=0;j<numRows;j++)
+    {
+        if(j==0)
+        {                                           //分割为每个单位后第一行最后一行只有一个字符分别以i=0和i=numRows-1 (这里J起始为0故减一）为起始向后以单位n推至结束
+            for(int i=0;i<sizel;i=i+n)
+                l[p++]=s[i];
+        }
+        else if(j==numRows-1)                   
+        {
+            for(int i=j;i<sizel;i=i+n)
+                l[p++]=s[i];
+        }
+        else 
+        {
+            int i=j;
+            while(1)
+            {
+                if(i<sizel)  
+                    l[p++]=s[i];
+                else 
+                    break;
+                i=(numRows-1-j)*2+i;
+                if(i<sizel)
+                    l[p++]=s[i];
+                else
+                     break;
+                i=i+j*2;
+            }
+        }
+    }
+    l[sizel]='\0';                                       //人造字符串不能忘了结束符号
+    return l;
+    }
+};
